@@ -9,14 +9,11 @@ def log(message):
     discord_mess = {
     "content": message,
     "username": "Eden server",
-    "avatar_url": "https://cdn.discordapp.com/icons/752571416934744095/872b6b45fc245c6bab8ff7df3d54326d.png?size=128"
-    }
+    "avatar_url": "https://cdn.discordapp.com/icons/752571416934744095/872b6b45fc245c6bab8ff7df3d54326d.png?size=128"}
+
     requests.post("https://discordapp.com/api/webhooks/765780298897948692/FG3zOc7aBcWxYTx21pgzcZDMG6Xt7Hk-dCmOpdh7KJVesqvuma9PtoKKELIS4uxc3KvV",
     json=discord_mess)
 
-    with open("log.txt","a") as file:
-        file.write(f"{message}\n")
-        file.close()
 print("starting")
 server = MinecraftServer.lookup("play.paradisenetworkmc.com")
 players,old_players = [],[]
@@ -24,7 +21,6 @@ server_up,server_up_old = None,None
 log("script start")
 loop = True
 while loop:
-    changed = False
     try:
         players = server.query().players.names
         server_up = True
