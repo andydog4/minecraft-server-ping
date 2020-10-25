@@ -1,6 +1,7 @@
 from mcstatus import MinecraftServer
 from datetime import datetime
-import time,requests
+from math import pi
+import time,requests,random
 
 wait_time = 60
 discord_avatar = "https://cdn.discordapp.com/icons/302094807046684672/a_4a2d4c71d0ec0c7f72792d7280a6529d.png?size=64"
@@ -17,12 +18,15 @@ class server():
         self.server_up_old,self.old_players = None,[]
         self.name = ip.split(".")[1]
         self.url = ip.split(".",1)[1]
+        random.seed(len(ip)*pi)
+        self.color = random.randint(0,0xffffff)
 
     def send(self,message):
         requests.post(self.webhook,json={
             "embeds": [{
                 "title": self.name,
                 "description": message,
+                "color": self.color,
                 "url": f"https://{self.url}",
                 "footer": {
                     "text": time_stamp()}}],
@@ -82,7 +86,9 @@ servers = []
 for ip in server_ips:
     servers.append(server(ip))
 
-while True: #server check loop
+loop = True
+while loop == True: #server check loop
     for server in servers:
         server.check()
     time.sleep(wait_time)
+    #loop = False

@@ -64,4 +64,3 @@ while True:
     for item in servers:
         item.check()
     time.sleep(wait_time)
-
