@@ -6,7 +6,6 @@ import time,requests,random
 wait_time = 60
 discord_avatar = "https://cdn.discordapp.com/icons/302094807046684672/a_4a2d4c71d0ec0c7f72792d7280a6529d.png?size=64"
 server_ips = [
-    "play.paradisenetworkmc.com",
     "minecraft.josho.nz",
     "mc.andydog4.xyz"]
 time_stamp = lambda: str(datetime.now()).split(" ")[1].split(".")[0]
