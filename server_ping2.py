@@ -87,7 +87,9 @@ for ip in server_ips:
 
 loop = True
 while loop == True: #server check loop
-    for server in servers:
-        server.check()
+    try:
+        for server in servers:
+            server.check()
+    except:
+        pass
     time.sleep(wait_time)
-    #loop = False
